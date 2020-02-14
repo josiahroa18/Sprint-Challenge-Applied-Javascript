@@ -42,8 +42,33 @@ function Carousel(){
   rightButton.classList.add('right-button');
 
   // Carousel Functionality
+  let currentIndex = 1;
+
+  // By Default, display first img
+  let currentImage = carousel.childNodes;
+  currentImage[currentIndex].style.display = "block";
+  
+  leftButton.addEventListener('click', () => {
+    currentImage[currentIndex].style.display = "none";
+    if(currentIndex == 1){
+      currentIndex = imgNames.length;
+    }else{
+      currentIndex --;
+    }
+    currentImage[currentIndex].style.display = "block";
+  })
+
+  rightButton.addEventListener('click', () => {
+    currentImage[currentIndex].style.display = "none";
+    if(currentIndex == imgNames.length){
+      currentIndex = 1;
+    }else{
+      currentIndex ++;
+    }
+    currentImage[currentIndex].style.display = "block";
+  })
+
 
   return carousel;
 }
-console.log(Carousel());
 carouselContainer.appendChild(Carousel());
